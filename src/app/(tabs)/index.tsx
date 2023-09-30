@@ -1,9 +1,20 @@
-import { StyleSheet } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
+import { tracks } from "../../../assets/data/tracks";
+import { Track } from "../types";
+import TrackListItem from "../../components/TrackListItem";
 
-import { View } from "../../components/Themed";
+export default function HomeScreen() {
+  const renderItem = ({ item }: { item: Track }) => {
+    return <TrackListItem track={item} />;
+  };
 
-export default function TabOneScreen() {
-  return <View style={styles.container}></View>;
+  return (
+    <FlatList
+      data={tracks}
+      renderItem={renderItem}
+      showsVerticalScrollIndicator={false}
+    />
+  );
 }
 
 const styles = StyleSheet.create({
